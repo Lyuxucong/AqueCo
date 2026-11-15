@@ -1,0 +1,44 @@
+AqueCo Environmental Factors module
+
+Functions:
+- aq_env(data, group, variables = NULL, test = 'kruskal',
+         posthoc = 'both'|'dunn'|'wilcox'|'none', p_adjust = 'BH')
+- aq_env_plot(data, type = 'boxplot'|'bar', variables = NULL,
+              facet = TRUE, bar_error = 'SE'|'SD'|'CI', ...)
+- aq_env_export(x, file = 'environment')
+
+Data conventions:
+- data$env: rows are Sample IDs; columns are environmental variables.
+- data$metadata: rows are Sample IDs; group variable is a metadata column.
+- Sample matching is explicitly performed by row names.
+- variables = NULL selects all numeric environmental columns.
+
+Statistics:
+- Overall tests: Kruskal-Wallis, one-way ANOVA, or none.
+- Pairwise tests: Dunn and Wilcoxon by default; either can be selected.
+- P values are adjusted with the selected method (BH by default).
+- Dunn's test is implemented using pooled ranks with tie correction.
+- Bar charts display mean +/- SE by default, with SD and 95% CI options.
+
+The source has been packaged but not executed in the user's R environment.
+
+Correlation module:
+- aq_env_cor(data, variables = NULL, method = 'spearman',
+             group = NULL, p_adjust = 'BH')
+- aq_env_cor_plot(data, show_value = TRUE, show_sig = TRUE)
+- Supports Pearson, Spearman, and Kendall correlations.
+- Can calculate overall correlations or within each metadata group.
+- Uses pairwise complete observations by default; adjusted P values use BH.
+- Heatmap cells show coefficients and optional significance stars.
+
+Environment–microbiome association module:
+- aq_env_microbe_cor(data, env_variables = NULL, level = 'Genus',
+  abundance = 'relative', method = 'spearman', group = NULL,
+  prevalence = 0.10, min_abundance = 0, top = NULL, p_adjust = 'BH')
+- aq_env_microbe_cor_plot(data, show_value = TRUE, show_sig = TRUE,
+  only_significant = FALSE)
+- Taxa are aggregated with aq_taxa() at the selected taxonomy rank.
+- Sample matching uses row names / Sample IDs.
+- Correlations are calculated for each taxon–environment variable pair.
+- Optional group mode calculates associations independently within groups.
+- P values are BH-adjusted across all tested pairs within each group.

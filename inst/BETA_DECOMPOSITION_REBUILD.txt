@@ -1,0 +1,21 @@
+AqueCo beta diversity decomposition rebuild
+
+The previous beta-partition/ternary implementation has been removed.
+New public functions:
+- aq_beta_decomp(data, group, method = 'sorensen', prevalence = 0)
+- aq_beta_decomp_plot(data, ...)
+
+The new implementation:
+- uses presence/absence data and betapart::beta.pair;
+- calculates pairwise turnover, nestedness and similarity;
+- performs pairwise comparisons within each metadata group independently;
+- returns a faceted ternary comparison plot with one panel per group;
+- also returns a separately accessible ternary plot for every group.
+
+The ternary components are defined as:
+Similarity = 1 - total beta dissimilarity;
+Turnover = beta.sim (Sørensen) or beta.jtu (Jaccard);
+Nestedness = beta.sne (Sørensen) or beta.jne (Jaccard).
+The three percentage components sum to 100.
+
+This archive has not been executed in the user's Windows/R environment.

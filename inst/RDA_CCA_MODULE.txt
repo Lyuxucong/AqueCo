@@ -1,0 +1,31 @@
+AqueCo RDA / CCA module
+
+Functions:
+- aq_rda_cca(data, method = c('RDA', 'CCA'), env_variables = NULL,
+  group = NULL, level = NULL, abundance = c('count', 'relative'),
+  transform = NULL, select = 'forward', permutations = 999,
+  p_cutoff = 0.05, prevalence = 0, min_abundance = 0, scaling = 2)
+- aq_rda_cca_plot(data, show_environment = TRUE, show_species = FALSE,
+  show_ellipse = FALSE, ellipse_level = 0.95, point_size = 3,
+  point_alpha = 0.85, label_samples = FALSE, palette = 'nature',
+  colors = NULL, arrow_multiplier = 1, theme = 'publication')
+
+Preprocessing:
+- RDA defaults to vegan::decostand(..., method = 'hellinger').
+- CCA defaults to raw non-negative abundance. Hellinger transformation
+  is rejected for CCA because it changes the standard chi-square geometry.
+- Optional taxonomic aggregation is available through aq_taxa().
+
+Selection:
+- RDA uses vegan::ordiR2step() with adjusted-R2 scope and Pin = p_cutoff.
+- CCA uses vegan::ordistep(direction = 'forward', Pin = p_cutoff).
+- The final constrained model and plot use only retained variables.
+
+Statistics:
+- Global permutation test, term-wise permutation tests, and axis tests
+  are returned.
+- RDA returns R-squared and adjusted R-squared.
+- CCA returns constrained inertia / total inertia as pseudo-R-squared;
+  adjusted R-squared is not reported by this module.
+- Axis labels show each constrained axis as a percentage of total inertia.
+- The first two constrained axes are reported when available.

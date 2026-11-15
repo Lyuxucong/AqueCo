@@ -1,0 +1,17 @@
+# AqueCo network workflow (run after installing aqueco and igraph)
+library(aqueco)
+otu <- read.csv("otutab.csv",row.names=1,check.names=FALSE)
+tax <- read.csv("taxonomy.csv",row.names=1,check.names=FALSE)
+md <- read.csv("metadata.csv",row.names=1,check.names=FALSE)
+dat <- aq_import(otu=otu,taxonomy=tax,metadata=md)
+net <- aq_network(dat,group="Group",groups=c("KO","OE","WT"),
+  method="spearman",min_abundance=0.0005,min_prevalence=0.3,
+  cor_cutoff=0.6,p_cutoff=0.05,p_adjust="BH")
+print(aq_net_topology(net))
+print(aq_net_node(net)[1:5,])
+print(aq_net_module(net)[1:5,])
+print(aq_net_zp(net)[1:5,])
+print(aq_net_plot(net[["KO"]]))
+print(aq_net_compare_plot(net,metric="Nodes"))
+print(aq_net_zp_plot(net))
+aq_net_export(net,file="AqueCo_Network")

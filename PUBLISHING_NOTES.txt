@@ -1,0 +1,12 @@
+Documentation-only deliverable. Copy README.md, docs/, and inst/examples/
+into the verified stable AqueCo source directory. Do NOT replace R/, man/,
+NAMESPACE, DESCRIPTION, tests/ or installed dependencies.
+
+The advanced full workflow script was preserved as supplied/formatted and is
+not guaranteed to run end-to-end with bundled KO/OE/WT data: it contains
+dataset-specific IW/CW/TW, Type, and pH references. The quickstart is the
+recommended bundled-data example.
+
+The DESCRIPTION maintainer has been set to Xucong Lyu
+(lvxvcong@outlook.com). Verify the package version before public GitHub release. The current code was not executed
+in an R environment as part of this documentation-only step.

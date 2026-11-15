@@ -1,0 +1,17 @@
+AqueCo group-wise Mantel module
+
+Functions:
+- aq_mantel(data, group, env_variables = NULL, level = NULL,
+  abundance = 'relative', community_method = 'bray',
+  env_method = 'euclidean', permutations = 999, p_adjust = 'BH',
+  prevalence = 0.10, min_abundance = 0, cor_method = 'pearson')
+- aq_mantel_plot(data, cor_show_sig = TRUE, cor_p_cutoff = 0.05,
+  mantel_p_breaks = c(0.01, 0.05), mantel_r_breaks = c(0.2, 0.3))
+
+Plot implementation follows the linkET workflow:
+- linkET::correlate() and linkET::qcorrplot() build the environmental matrix.
+- linkET::geom_square() draws correlation tiles.
+- linkET::geom_mark() displays significance.
+- linkET::geom_couple() draws Mantel links using from = treatment Group
+  and to = Environment. Node coordinates are computed by linkET.
+- Install linkET if needed: remotes::install_github('Hy4m/linkET').

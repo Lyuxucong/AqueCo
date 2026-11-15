@@ -1,0 +1,41 @@
+Package: aqueco
+Title: Integrated Analysis and Visualization of Amplicon Microbiome Data
+Version: 0.1.0
+Authors@R: person("Xucong", "Lyu", role = c("aut", "cre"), email = "lvxvcong@outlook.com")
+Description: A modular workflow for importing, validating, summarizing, analyzing,
+    and visualizing 16S and ITS amplicon sequencing data, including taxonomic
+    composition, alpha and beta diversity, environmental factor analysis, correlation and group-wise Mantel testing,
+    ordination, beta diversity decomposition, RDA/CCA constrained ordination, and variation partitioning analysis (VPA).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: R (>= 4.1.0)
+Imports:
+    ggplot2,
+    vegan,
+    stats,
+    utils,
+    grDevices,
+    graphics,
+    rlang
+Suggests:
+    testthat (>= 3.0.0),
+    ggVennDiagram,
+    ComplexUpset,
+    betapart,
+    ggtern,
+    ggExtra,
+    patchwork,
+    ragg,
+    ape,
+    picante,
+    microeco,
+    igraph,
+    phyloseq,
+    microbiomeMarker,
+    aplot,
+    linkET,
+    adespatial,
+    geosphere
+Config/testthat/edition: 3

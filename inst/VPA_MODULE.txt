@@ -1,0 +1,31 @@
+AqueCo Variation Partitioning Analysis (VPA)
+
+Example:
+vpa_res <- aq_vpa(
+  data = dat,
+  groups = list(
+    Physical = c("Temperature", "Depth"),
+    Chemical = c("TN", "TP", "pH")
+  ),
+  include_space = TRUE,
+  latitude = "latitude",
+  longitude = "longitude",
+  env_transform = "scale"
+)
+aq_vpa_plot(vpa_res)
+
+Transformations:
+- Community abundance is Hellinger transformed.
+- Environmental predictors are centered and scaled by default. Optional
+  none, log1p_scale, and log10_scale transformations are available.
+- Latitude/longitude are not entered as raw degrees. They are converted to
+  great-circle Haversine distances in kilometres, then to positive dbMEM
+  spatial eigenfunctions using adespatial::dbmem.
+- Spatial analysis requires optional packages adespatial and geosphere.
+
+Statistics:
+- vegan::varpart partitions adjusted R-squared among 2-4 explanatory sets.
+- Negative adjusted fractions can occur and should be reported, not silently
+  truncated. Plot cutoff only controls label display.
+- VPA does not provide a permutation P value for every individual fraction.
+- Classic Venn diagrams support 2-4 explanatory sets.

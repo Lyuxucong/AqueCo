@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use AqueCo in your research, please cite this software and the version used."
+title: "AqueCo: Integrated Analysis and Visualization of Amplicon Microbiome Data"
+type: software
+authors:
+  - family-names: Lyu
+    given-names: Xucong
+version: "0.1.0"
+license: MIT
