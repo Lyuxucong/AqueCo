@@ -27,22 +27,49 @@
 - `ggplot2`, `vegan`, and the package's declared dependencies
 - Some features require additional packages listed in `DESCRIPTION` under `Suggests`.
 
-For a local copy of the AqueCo source package:
+### Install from GitHub
 
 ```r
 install.packages("remotes")
-remotes::install_local("D:/AqueCo/aqueco", dependencies = TRUE)
+remotes::install_github(
+  "Lyuxucong/AqueCo",
+  dependencies = TRUE
+)
 library(aqueco)
 packageVersion("aqueco")
 ```
 
-After the repository is published, replace `YOUR_USERNAME` with the real GitHub username:
+If the GitHub repository is private, you must have permission and authenticate with GitHub.
+
+### Install from a Local Source Directory
 
 ```r
-remotes::install_github("YOUR_USERNAME/AqueCo", dependencies = TRUE)
+remotes::install_local(
+  "D:/AqueCo/aqueco",
+  dependencies = TRUE
+)
 ```
 
-The GitHub installation command is a **future example**, not an active repository link.
+Replace the path with the actual directory containing the AqueCo `DESCRIPTION` file.
+
+### Update AqueCo
+
+```r
+remotes::install_github(
+  "Lyuxucong/AqueCo",
+  dependencies = TRUE,
+  upgrade = "never",
+  force = TRUE
+)
+```
+
+### Verify the Installation
+
+```r
+library(aqueco)
+packageVersion("aqueco")
+help(package = "aqueco")
+```
 
 ## Bundled example data
 

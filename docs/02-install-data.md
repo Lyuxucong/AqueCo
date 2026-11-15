@@ -3,23 +3,33 @@
 [← Table of contents](README.md)
 
 ## Installation
-
-The package declares R >= 4.1.0. Install from a local verified source directory:
+Install AqueCo directly from GitHub:
 
 ```r
 install.packages("remotes")
-remotes::install_local("D:/AqueCo/aqueco", dependencies = TRUE)
+remotes::install_github("Lyuxucong/AqueCo", dependencies = TRUE)
+```
+
+Load the package and check the version:
+
+```r
 library(aqueco)
 packageVersion("aqueco")
 ```
 
-After the GitHub repository is available, replace the placeholder username:
+> If the repository is private, installation requires GitHub access and authentication.
 
-```r
-remotes::install_github("YOUR_USERNAME/AqueCo", dependencies = TRUE)
-```
+## Documentation
 
-Some workflows require packages listed in `Suggests` in `DESCRIPTION`; install these only as required for the analyses you intend to run.
+See the [Complete AqueCo User Manual](docs/README.md) for detailed instructions and examples.
+
+## Author and Maintainer
+
+**Xucong Lyu**  
+Email: lvxvcong@outlook.com  
+Repository: https://github.com/Lyuxucong/AqueCo
+
+
 
 ## File layout and identifiers
 
