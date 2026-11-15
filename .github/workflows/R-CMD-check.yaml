@@ -23,7 +23,27 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install dependencies
+      - name: Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Install Bioconductor and GitHub dependencies
+        shell: Rscript {0}
+        run: |
+          install.packages(c("BiocManager", "remotes"))
+
+          BiocManager::install(
+            "microbiomeMarker",
+            ask = FALSE,
+            update = FALSE
+          )
+
+          remotes::install_github(
+            "Hy4m/linkET",
+            dependencies = FALSE,
+            upgrade = "never"
+          )
+
+      - name: Install remaining dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
